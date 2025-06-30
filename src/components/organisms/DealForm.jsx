@@ -183,12 +183,8 @@ const handleChange = (e) => {
     }
   }
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-xl shadow-lg p-6"
-    >
+return (
+    <div className="bg-white rounded-xl p-6 max-w-4xl mx-auto max-h-[90vh] overflow-y-auto">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-semibold text-surface-900">
           {deal ? 'Edit Deal' : 'Add New Deal'}
@@ -295,7 +291,7 @@ const handleChange = (e) => {
           </Button>
         </div>
       </form>
-    </motion.div>
+</div>
   )
 }
 

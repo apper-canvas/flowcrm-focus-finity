@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { toast } from 'react-toastify'
+import Modal from 'react-modal'
 import DealPipeline from '@/components/organisms/DealPipeline'
 import DealForm from '@/components/organisms/DealForm'
 import Loading from '@/components/ui/Loading'
@@ -8,7 +9,6 @@ import Error from '@/components/ui/Error'
 import { dealService } from '@/services/api/dealService'
 import { contactService } from '@/services/api/contactService'
 import { activityService } from '@/services/api/activityService'
-
 const Deals = () => {
   const [deals, setDeals] = useState([])
   const [contacts, setContacts] = useState([])
@@ -138,15 +138,21 @@ const Deals = () => {
       animate={{ opacity: 1 }}
       className="space-y-6"
     >
-      {/* Deal Form */}
-      {showForm && (
+{/* Deal Form Modal */}
+      <Modal
+        isOpen={showForm}
+        onRequestClose={handleCloseForm}
+        className="modal-content"
+        overlayClassName="modal-overlay"
+        ariaHideApp={false}
+      >
         <DealForm
           deal={editingDeal}
           contacts={contacts}
           onSubmit={editingDeal ? handleEditDeal : handleCreateDeal}
           onCancel={handleCloseForm}
         />
-      )}
+      </Modal>
 
       {/* Deal Pipeline */}
       <DealPipeline
