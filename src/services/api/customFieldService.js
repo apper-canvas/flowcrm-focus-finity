@@ -118,9 +118,8 @@ async create(fieldData) {
           type: fieldData.type,
           entity: fieldData.entity,
           required: fieldData.required || false,
-          placeholder: fieldData.placeholder || null,
-          options: fieldData.options ? fieldData.options.join(',') : null,
-          Tags: fieldData.Tags || null
+          placeholder: fieldData.placeholder || "",
+          options: fieldData.options ? fieldData.options.join(',') : ""
         }]
       };
 
