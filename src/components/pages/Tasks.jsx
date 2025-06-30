@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { isPast, isToday } from "date-fns";
+import Modal from "react-modal";
 import ApperIcon from "@/components/ApperIcon";
 import TaskForm from "@/components/organisms/TaskForm";
 import Badge from "@/components/atoms/Badge";
@@ -351,8 +352,17 @@ const Tasks = () => {
         </div>
       </div>
 
-      {/* Task Form */}
-      {showForm && (
+{/* Task Form Modal */}
+      <Modal
+        isOpen={showForm}
+        onRequestClose={() => {
+          setShowForm(false)
+          setEditingTask(null)
+        }}
+        className="max-w-2xl mx-auto mt-20 bg-white rounded-lg shadow-xl outline-none"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center p-4 z-50"
+        ariaHideApp={false}
+      >
         <TaskForm
           task={editingTask}
           contacts={contacts}
@@ -363,7 +373,7 @@ const Tasks = () => {
             setEditingTask(null)
           }}
         />
-      )}
+      </Modal>
 
       {/* Task List */}
       <div className="space-y-3">
