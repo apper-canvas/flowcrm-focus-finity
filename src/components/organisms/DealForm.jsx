@@ -138,7 +138,14 @@ const handleChange = (e) => {
             required={field.required}
           />
         )
-      case 'select':
+case 'select':
+        // Handle both string (database) and array (mock data) formats for options
+        const optionsArray = Array.isArray(field.options) 
+          ? field.options 
+          : (typeof field.options === 'string' && field.options) 
+            ? field.options.split(',').map(opt => opt.trim())
+            : [];
+            
         return (
           <Select
             key={field.Id}
@@ -146,7 +153,7 @@ const handleChange = (e) => {
             name={`custom_${field.Id}`}
             value={value}
             onChange={(e) => handleCustomFieldChange(field.Id, e.target.value)}
-            options={field.options?.map(opt => ({ value: opt, label: opt })) || []}
+            options={optionsArray.map(opt => ({ value: opt, label: opt }))}
             placeholder={field.placeholder}
             required={field.required}
           />
