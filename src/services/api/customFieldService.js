@@ -109,11 +109,11 @@ class CustomFieldService {
     }
   }
 
-  async create(fieldData) {
+async create(fieldData) {
     try {
       const params = {
         records: [{
-Name: fieldData.label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, ''),
+          Name: fieldData.label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, ''),
           label: fieldData.label,
           type: fieldData.type,
           entity: fieldData.entity,
@@ -148,13 +148,12 @@ Name: fieldData.label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, 
     }
   }
 
-  async update(id, fieldData) {
+async update(id, fieldData) {
     try {
       const updateRecord = { Id: parseInt(id) };
       
       if (fieldData.label !== undefined) {
-        updateRecord.Name = fieldData.label;
-updateRecord.label = fieldData.label;
+        updateRecord.label = fieldData.label;
         updateRecord.Name = fieldData.label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
       }
       if (fieldData.type !== undefined) updateRecord.type = fieldData.type;
