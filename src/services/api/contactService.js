@@ -173,6 +173,4 @@ class ContactService {
     }
   }
 }
-
-export const contactService = new ContactService()
 export const contactService = new ContactService()
