@@ -138,7 +138,7 @@ const handleChange = (e) => {
             required={field.required}
           />
         )
-case 'select':
+case 'select': {
         // Handle both string (database) and array (mock data) formats for options
         const optionsArray = Array.isArray(field.options) 
           ? field.options 
@@ -158,6 +158,7 @@ case 'select':
             required={field.required}
           />
         )
+      }
       case 'checkbox':
         return (
           <div key={field.Id} className="flex items-center space-x-2">
