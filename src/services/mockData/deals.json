@@ -1,0 +1,84 @@
+{
+  "dealData": [
+    {
+      "Id": 1,
+      "title": "TechCorp Enterprise License",
+      "value": 75000,
+      "stage": "negotiation",
+      "contactId": 1,
+      "probability": 85,
+      "expectedCloseDate": "2024-02-15T00:00:00Z",
+      "createdAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "Id": 2,
+      "title": "Innovate Co Implementation",
+      "value": 125000,
+      "stage": "proposal",
+      "contactId": 2,
+      "probability": 70,
+      "expectedCloseDate": "2024-02-28T00:00:00Z",
+      "createdAt": "2024-01-16T09:15:00Z"
+    },
+    {
+      "Id": 3,
+      "title": "StartupXYZ Pilot Program",
+      "value": 25000,
+      "stage": "qualified",
+      "contactId": 3,
+      "probability": 60,
+      "expectedCloseDate": "2024-02-10T00:00:00Z",
+      "createdAt": "2024-01-17T16:20:00Z"
+    },
+    {
+      "Id": 4,
+      "title": "Global Inc Expansion",
+      "value": 200000,
+      "stage": "lead",
+      "contactId": 4,
+      "probability": 25,
+      "expectedCloseDate": "2024-03-15T00:00:00Z",
+      "createdAt": "2024-01-18T11:30:00Z"
+    },
+    {
+      "Id": 5,
+      "title": "Media Co Marketing Suite",
+      "value": 45000,
+      "stage": "closed-won",
+      "contactId": 5,
+      "probability": 100,
+      "expectedCloseDate": "2024-01-25T00:00:00Z",
+      "createdAt": "2024-01-19T14:45:00Z"
+    },
+    {
+      "Id": 6,
+      "title": "Retail Plus POS System",
+      "value": 30000,
+      "stage": "proposal",
+      "contactId": 6,
+      "probability": 55,
+      "expectedCloseDate": "2024-02-20T00:00:00Z",
+      "createdAt": "2024-01-20T08:30:00Z"
+    },
+    {
+      "Id": 7,
+      "title": "HealthTech Integration",
+      "value": 95000,
+      "stage": "qualified",
+      "contactId": 7,
+      "probability": 45,
+      "expectedCloseDate": "2024-03-01T00:00:00Z",
+      "createdAt": "2024-01-21T13:15:00Z"
+    },
+    {
+      "Id": 8,
+      "title": "Finance Solutions Upgrade",
+      "value": 180000,
+      "stage": "negotiation",
+      "contactId": 8,
+      "probability": 90,
+      "expectedCloseDate": "2024-02-05T00:00:00Z",
+      "createdAt": "2024-01-22T15:45:00Z"
+    }
+  ]
+}

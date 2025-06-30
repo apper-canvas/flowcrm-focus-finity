@@ -1,0 +1,114 @@
+{
+  "taskData": [
+    {
+      "Id": 1,
+      "title": "Follow up on TechCorp proposal",
+      "description": "Send updated proposal with pricing adjustments",
+      "dueDate": "2024-01-25T09:00:00Z",
+      "status": "pending",
+      "priority": "high",
+      "contactId": 1,
+      "dealId": 1,
+      "createdAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "Id": 2,
+      "title": "Schedule demo with Innovate Co",
+      "description": "Set up technical demo for next week",
+      "dueDate": "2024-01-26T14:00:00Z",
+      "status": "in-progress",
+      "priority": "high",
+      "contactId": 2,
+      "dealId": 2,
+      "createdAt": "2024-01-16T09:15:00Z"
+    },
+    {
+      "Id": 3,
+      "title": "Prepare StartupXYZ presentation",
+      "description": "Create customized pitch deck focusing on ROI",
+      "dueDate": "2024-01-24T16:00:00Z",
+      "status": "completed",
+      "priority": "medium",
+      "contactId": 3,
+      "dealId": 3,
+      "createdAt": "2024-01-17T16:20:00Z"
+    },
+    {
+      "Id": 4,
+      "title": "Research Global Inc requirements",
+      "description": "Gather technical requirements for enterprise deployment",
+      "dueDate": "2024-01-27T10:00:00Z",
+      "status": "pending",
+      "priority": "medium",
+      "contactId": 4,
+      "dealId": 4,
+      "createdAt": "2024-01-18T11:30:00Z"
+    },
+    {
+      "Id": 5,
+      "title": "Send contract to Media Co",
+      "description": "Finalize and send signed contract",
+      "dueDate": "2024-01-23T12:00:00Z",
+      "status": "completed",
+      "priority": "high",
+      "contactId": 5,
+      "dealId": 5,
+      "createdAt": "2024-01-19T14:45:00Z"
+    },
+    {
+      "Id": 6,
+      "title": "Call Retail Plus for feedback",
+      "description": "Follow up on proposal presentation",
+      "dueDate": "2024-01-25T11:00:00Z",
+      "status": "pending",
+      "priority": "medium",
+      "contactId": 6,
+      "dealId": 6,
+      "createdAt": "2024-01-20T08:30:00Z"
+    },
+    {
+      "Id": 7,
+      "title": "Send HealthTech case studies",
+      "description": "Share relevant healthcare implementation examples",
+      "dueDate": "2024-01-26T15:00:00Z",
+      "status": "in-progress",
+      "priority": "low",
+      "contactId": 7,
+      "dealId": 7,
+      "createdAt": "2024-01-21T13:15:00Z"
+    },
+    {
+      "Id": 8,
+      "title": "Prepare Finance Solutions contract",
+      "description": "Draft contract with negotiated terms",
+      "dueDate": "2024-01-24T13:00:00Z",
+      "status": "pending",
+      "priority": "high",
+      "contactId": 8,
+      "dealId": 8,
+      "createdAt": "2024-01-22T15:45:00Z"
+    },
+    {
+      "Id": 9,
+      "title": "Weekly team meeting",
+      "description": "Review pipeline and upcoming activities",
+      "dueDate": "2024-01-26T10:00:00Z",
+      "status": "pending",
+      "priority": "medium",
+      "contactId": null,
+      "dealId": null,
+      "createdAt": "2024-01-23T09:00:00Z"
+    },
+    {
+      "Id": 10,
+      "title": "Update CRM records",
+      "description": "Clean up and update contact information",
+      "dueDate": "2024-01-25T17:00:00Z",
+      "status": "pending",
+      "priority": "low",
+      "contactId": null,
+      "dealId": null,
+      "createdAt": "2024-01-23T14:30:00Z"
+    }
+  ]
+}

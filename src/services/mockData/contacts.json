@@ -1,0 +1,92 @@
+{
+  "contactData": [
+    {
+      "Id": 1,
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@techcorp.com",
+      "phone": "+1 (555) 123-4567",
+      "company": "TechCorp Solutions",
+      "position": "VP of Sales",
+      "tags": ["vip", "decision-maker", "tech"],
+      "createdAt": "2024-01-15T10:00:00Z",
+      "lastContactedAt": "2024-01-20T14:30:00Z"
+    },
+    {
+      "Id": 2,
+      "name": "Michael Chen",
+      "email": "m.chen@innovate.co",
+      "phone": "+1 (555) 234-5678",
+      "company": "Innovate Co",
+      "position": "CTO",
+      "tags": ["technical", "enterprise"],
+      "createdAt": "2024-01-16T09:15:00Z",
+      "lastContactedAt": "2024-01-18T11:45:00Z"
+    },
+    {
+      "Id": 3,
+      "name": "Emily Rodriguez",
+      "email": "emily.r@startupxyz.com",
+      "phone": "+1 (555) 345-6789",
+      "company": "StartupXYZ",
+      "position": "Founder",
+      "tags": ["startup", "founder", "hot-lead"],
+      "createdAt": "2024-01-17T16:20:00Z",
+      "lastContactedAt": "2024-01-19T09:30:00Z"
+    },
+    {
+      "Id": 4,
+      "name": "David Kim",
+      "email": "david.kim@globalinc.com",
+      "phone": "+1 (555) 456-7890",
+      "company": "Global Inc",
+      "position": "Director of Operations",
+      "tags": ["enterprise", "operations"],
+      "createdAt": "2024-01-18T11:30:00Z",
+      "lastContactedAt": null
+    },
+    {
+      "Id": 5,
+      "name": "Lisa Thompson",
+      "email": "lisa.thompson@mediaco.com",
+      "phone": "+1 (555) 567-8901",
+      "company": "Media Co",
+      "position": "Marketing Director",
+      "tags": ["marketing", "media"],
+      "createdAt": "2024-01-19T14:45:00Z",
+      "lastContactedAt": "2024-01-21T16:15:00Z"
+    },
+    {
+      "Id": 6,
+      "name": "James Wilson",
+      "email": "james.wilson@retailplus.com",
+      "phone": "+1 (555) 678-9012",
+      "company": "Retail Plus",
+      "position": "Store Manager",
+      "tags": ["retail", "manager"],
+      "createdAt": "2024-01-20T08:30:00Z",
+      "lastContactedAt": "2024-01-22T10:00:00Z"
+    },
+    {
+      "Id": 7,
+      "name": "Anna Garcia",
+      "email": "anna.garcia@healthtech.com",
+      "phone": "+1 (555) 789-0123",
+      "company": "HealthTech",
+      "position": "Product Manager",
+      "tags": ["healthcare", "product"],
+      "createdAt": "2024-01-21T13:15:00Z",
+      "lastContactedAt": null
+    },
+    {
+      "Id": 8,
+      "name": "Robert Lee",
+      "email": "robert.lee@finance.com",
+      "phone": "+1 (555) 890-1234",
+      "company": "Finance Solutions",
+      "position": "CFO",
+      "tags": ["finance", "c-level", "vip"],
+      "createdAt": "2024-01-22T15:45:00Z",
+      "lastContactedAt": "2024-01-23T12:30:00Z"
+    }
+  ]
+}

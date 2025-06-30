@@ -1,0 +1,124 @@
+{
+  "activityData": [
+    {
+      "Id": 1,
+      "type": "email",
+      "description": "Sent follow-up email to Sarah Johnson regarding TechCorp proposal",
+      "timestamp": "2024-01-23T09:30:00Z",
+      "contactId": 1,
+      "dealId": 1
+    },
+    {
+      "Id": 2,
+      "type": "call",
+      "description": "30-minute discovery call with Michael Chen from Innovate Co",
+      "timestamp": "2024-01-23T14:15:00Z",
+      "contactId": 2,
+      "dealId": 2
+    },
+    {
+      "Id": 3,
+      "type": "meeting",
+      "description": "Product demo meeting with Emily Rodriguez at StartupXYZ",
+      "timestamp": "2024-01-22T16:00:00Z",
+      "contactId": 3,
+      "dealId": 3
+    },
+    {
+      "Id": 4,
+      "type": "note",
+      "description": "Added notes from conversation with David Kim about Global Inc requirements",
+      "timestamp": "2024-01-22T11:45:00Z",
+      "contactId": 4,
+      "dealId": 4
+    },
+    {
+      "Id": 5,
+      "type": "deal",
+      "description": "Moved Media Co Marketing Suite deal to closed-won stage",
+      "timestamp": "2024-01-21T13:20:00Z",
+      "contactId": 5,
+      "dealId": 5
+    },
+    {
+      "Id": 6,
+      "type": "task",
+      "description": "Completed task: Prepare StartupXYZ presentation",
+      "timestamp": "2024-01-21T17:30:00Z",
+      "contactId": 3,
+      "dealId": 3
+    },
+    {
+      "Id": 7,
+      "type": "email",
+      "description": "Sent pricing information to James Wilson at Retail Plus",
+      "timestamp": "2024-01-21T10:15:00Z",
+      "contactId": 6,
+      "dealId": 6
+    },
+    {
+      "Id": 8,
+      "type": "contact",
+      "description": "Created new contact: Anna Garcia from HealthTech",
+      "timestamp": "2024-01-21T13:15:00Z",
+      "contactId": 7,
+      "dealId": null
+    },
+    {
+      "Id": 9,
+      "type": "call",
+      "description": "Follow-up call with Robert Lee about Finance Solutions contract terms",
+      "timestamp": "2024-01-20T15:45:00Z",
+      "contactId": 8,
+      "dealId": 8
+    },
+    {
+      "Id": 10,
+      "type": "meeting",
+      "description": "Initial consultation meeting with Lisa Thompson from Media Co",
+      "timestamp": "2024-01-20T14:00:00Z",
+      "contactId": 5,
+      "dealId": 5
+    },
+    {
+      "Id": 11,
+      "type": "email",
+      "description": "Sent welcome email to new contact David Kim",
+      "timestamp": "2024-01-19T12:30:00Z",
+      "contactId": 4,
+      "dealId": null
+    },
+    {
+      "Id": 12,
+      "type": "deal",
+      "description": "Created new deal: HealthTech Integration",
+      "timestamp": "2024-01-19T09:45:00Z",
+      "contactId": 7,
+      "dealId": 7
+    },
+    {
+      "Id": 13,
+      "type": "note",
+      "description": "Added competitor analysis notes for TechCorp opportunity",
+      "timestamp": "2024-01-18T16:20:00Z",
+      "contactId": 1,
+      "dealId": 1
+    },
+    {
+      "Id": 14,
+      "type": "email",
+      "description": "Sent case study to Emily Rodriguez at StartupXYZ",
+      "timestamp": "2024-01-18T11:30:00Z",
+      "contactId": 3,
+      "dealId": 3
+    },
+    {
+      "Id": 15,
+      "type": "task",
+      "description": "Completed task: Send contract to Media Co",
+      "timestamp": "2024-01-17T14:45:00Z",
+      "contactId": 5,
+      "dealId": 5
+    }
+  ]
+}
