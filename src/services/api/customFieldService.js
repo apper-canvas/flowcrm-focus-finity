@@ -219,6 +219,4 @@ updateRecord.label = fieldData.label;
     }
 }
 }
-
-export { customFieldService };
 export const customFieldService = new CustomFieldService()
