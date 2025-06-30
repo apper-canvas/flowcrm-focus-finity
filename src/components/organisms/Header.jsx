@@ -11,14 +11,13 @@ const Header = ({ onMenuToggle, onSearch }) => {
       className="bg-white border-b border-surface-200 px-4 lg:px-6 py-4"
     >
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+<div className="flex items-center space-x-4">
           <button
             onClick={onMenuToggle}
-            className="p-2 rounded-lg hover:bg-surface-100 transition-colors lg:hidden"
+            className="p-2 rounded-lg hover:bg-surface-100 transition-colors"
           >
             <ApperIcon name="Menu" className="w-5 h-5 text-surface-600" />
           </button>
-          
           <div className="hidden md:block">
             <SearchBar 
               onSearch={onSearch}
