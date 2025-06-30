@@ -28,13 +28,13 @@ const navigation = [
         )}
       </AnimatePresence>
 
-      <motion.div
+<motion.div
         initial={false}
         animate={{
           x: isOpen ? 0 : -240
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="fixed left-0 top-0 bottom-0 w-60 bg-white border-r border-surface-200 z-30 lg:translate-x-0 lg:static lg:z-0"
+        className="fixed left-0 top-0 bottom-0 w-60 bg-white border-r border-surface-200 z-30 lg:translate-x-0 lg:sticky lg:top-0 lg:h-screen lg:z-0"
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between p-6 border-b border-surface-200">
