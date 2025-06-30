@@ -6,14 +6,14 @@ import ApperIcon from '@/components/ApperIcon'
 const Sidebar = ({ isOpen, onToggle }) => {
   const location = useLocation()
   
-  const navigation = [
+const navigation = [
     { name: 'Dashboard', href: '/', icon: 'LayoutDashboard' },
     { name: 'Contacts', href: '/contacts', icon: 'Users' },
     { name: 'Deals', href: '/deals', icon: 'Target' },
     { name: 'Tasks', href: '/tasks', icon: 'CheckSquare' },
-    { name: 'Activities', href: '/activities', icon: 'Activity' }
+    { name: 'Activities', href: '/activities', icon: 'Activity' },
+    { name: 'Custom Fields', href: '/custom-fields', icon: 'Settings' }
   ]
-
   return (
     <>
       <AnimatePresence>

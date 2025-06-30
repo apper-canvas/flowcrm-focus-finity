@@ -8,7 +8,7 @@ import ContactDetail from '@/components/pages/ContactDetail'
 import Deals from '@/components/pages/Deals'
 import Tasks from '@/components/pages/Tasks'
 import Activities from '@/components/pages/Activities'
-
+import CustomFields from '@/components/pages/CustomFields'
 function App() {
   return (
     <div className="App min-h-screen bg-gradient-to-br from-surface-50 to-surface-100">
@@ -17,10 +17,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/contacts" element={<Contacts />} />
-            <Route path="/contacts/:id" element={<ContactDetail />} />
+<Route path="/contacts/:id" element={<ContactDetail />} />
             <Route path="/deals" element={<Deals />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/activities" element={<Activities />} />
+            <Route path="/custom-fields" element={<CustomFields />} />
           </Routes>
         </Layout>
       </Router>
