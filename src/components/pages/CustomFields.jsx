@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { toast } from 'react-toastify'
+import Modal from 'react-modal'
 import Input from '@/components/atoms/Input'
 import Select from '@/components/atoms/Select'
 import Button from '@/components/atoms/Button'
@@ -9,6 +10,9 @@ import Error from '@/components/ui/Error'
 import Empty from '@/components/ui/Empty'
 import ApperIcon from '@/components/ApperIcon'
 import { customFieldService } from '@/services/api/customFieldService'
+
+// Set the app element for accessibility
+Modal.setAppElement('#root')
 
 const CustomFields = () => {
   const [fields, setFields] = useState([])
@@ -44,7 +48,7 @@ const CustomFields = () => {
     }
   }
 
-  const handleShowForm = () => {
+const handleShowForm = () => {
     setEditingField(null)
     setFormData({
       label: '',
@@ -56,6 +60,20 @@ const CustomFields = () => {
     })
     setOptionInput('')
     setShowForm(true)
+  }
+
+  const handleCloseModal = () => {
+    setShowForm(false)
+    setEditingField(null)
+    setFormData({
+      label: '',
+      type: 'text',
+      entity: 'contact',
+      required: false,
+      placeholder: '',
+      options: []
+    })
+    setOptionInput('')
   }
 
   const handleEditField = (field) => {
@@ -107,8 +125,7 @@ const CustomFields = () => {
         toast.success('Custom field created successfully')
       }
 
-      setShowForm(false)
-      setEditingField(null)
+handleCloseModal()
     } catch (error) {
       toast.error('Failed to save custom field')
     } finally {
@@ -201,15 +218,21 @@ const CustomFields = () => {
           Add Custom Field
         </Button>
       </div>
-
-      {/* Custom Field Form */}
-      {showForm && (
+{/* Custom Field Modal */}
+      <Modal
+        isOpen={showForm}
+        onRequestClose={handleCloseModal}
+        className="modal-content"
+        overlayClassName="modal-overlay"
+        closeTimeoutMS={200}
+      >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-xl shadow-lg p-6"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
         >
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between p-6 border-b border-surface-200">
             <h2 className="text-xl font-semibold text-surface-900">
               {editingField ? 'Edit Custom Field' : 'Add Custom Field'}
             </h2>
@@ -217,12 +240,12 @@ const CustomFields = () => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setShowForm(false)}
+              onClick={handleCloseModal}
               icon="X"
             />
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="p-6 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Input
                 label="Field Label"
@@ -315,11 +338,11 @@ const CustomFields = () => {
               </div>
             )}
 
-            <div className="flex justify-end space-x-3 pt-4">
+            <div className="flex justify-end space-x-3 pt-4 border-t border-surface-200">
               <Button
                 type="button"
                 variant="secondary"
-                onClick={() => setShowForm(false)}
+                onClick={handleCloseModal}
               >
                 Cancel
               </Button>
@@ -334,7 +357,7 @@ const CustomFields = () => {
             </div>
           </form>
         </motion.div>
-      )}
+      </Modal>
 
       {/* Fields List */}
       <div className="space-y-4">
