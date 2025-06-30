@@ -107,7 +107,7 @@ const handleChange = (e) => {
             required={field.required}
           />
         )
-      case 'number':
+case 'number':
         return (
           <Input
             key={field.Id}
@@ -120,7 +120,6 @@ const handleChange = (e) => {
 required={field.required}
           />
         )
-        break;
         
       case 'select': {
         // Handle options field that can be either string (from database) or array (from mock data)
