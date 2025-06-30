@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { toast } from 'react-toastify'
-import Input from '@/components/atoms/Input'
-import Select from '@/components/atoms/Select'
-import Button from '@/components/atoms/Button'
-import ApperIcon from '@/components/ApperIcon'
-import { customFieldService } from '@/services/api/customFieldService'
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import Select from "@/components/atoms/Select";
+import Input from "@/components/atoms/Input";
+import Button from "@/components/atoms/Button";
+import { customFieldService } from "@/services/api/customFieldService";
 const ContactForm = ({ contact = null, onSubmit, onCancel }) => {
 const [formData, setFormData] = useState({
     name: contact?.Name || '',
@@ -117,10 +117,12 @@ const handleChange = (e) => {
             value={value}
             onChange={(e) => handleCustomFieldChange(field.Id, e.target.value)}
             placeholder={field.placeholder}
-            required={field.required}
+required={field.required}
           />
         )
-case 'select':
+        break;
+        
+      case 'select': {
         // Handle options field that can be either string (from database) or array (from mock data)
         const optionsArray = Array.isArray(field.options) 
           ? field.options 
@@ -140,7 +142,9 @@ case 'select':
             required={field.required}
           />
         )
-      case 'checkbox':
+      }
+      
+case 'checkbox': {
         return (
           <div key={field.Id} className="flex items-center space-x-2">
             <input
@@ -155,6 +159,8 @@ case 'select':
             </label>
           </div>
         )
+      }
+      
       case 'date':
         return (
           <Input
