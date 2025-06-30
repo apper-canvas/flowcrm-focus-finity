@@ -1,71 +1,221 @@
-import mockData from '@/services/mockData/customFields.json'
-
 class CustomFieldService {
   constructor() {
-    this.fields = [...mockData]
-    this.lastId = Math.max(...this.fields.map(field => field.Id), 0)
+    const { ApperClient } = window.ApperSDK;
+    this.apperClient = new ApperClient({
+      apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+      apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+    });
+    this.tableName = 'custom_field';
   }
 
   async getAll() {
-    await new Promise(resolve => setTimeout(resolve, 200))
-    return [...this.fields]
+    try {
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "label" } },
+          { field: { Name: "type" } },
+          { field: { Name: "entity" } },
+          { field: { Name: "required" } },
+          { field: { Name: "placeholder" } },
+          { field: { Name: "options" } },
+          { field: { Name: "Tags" } },
+          { field: { Name: "CreatedOn" } }
+        ],
+        orderBy: [{ fieldName: "CreatedOn", sorttype: "DESC" }],
+        pagingInfo: { limit: 100, offset: 0 }
+      };
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+
+      return response.data || [];
+    } catch (error) {
+      console.error("Error fetching custom fields:", error);
+      throw error;
+    }
   }
 
   async getById(id) {
-    await new Promise(resolve => setTimeout(resolve, 200))
-    const field = this.fields.find(f => f.Id === parseInt(id))
-    if (!field) {
-      throw new Error('Custom field not found')
+    try {
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "label" } },
+          { field: { Name: "type" } },
+          { field: { Name: "entity" } },
+          { field: { Name: "required" } },
+          { field: { Name: "placeholder" } },
+          { field: { Name: "options" } },
+          { field: { Name: "Tags" } },
+          { field: { Name: "CreatedOn" } }
+        ]
+      };
+
+      const response = await this.apperClient.getRecordById(this.tableName, parseInt(id), params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        return null;
+      }
+
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching custom field with ID ${id}:`, error);
+      return null;
     }
-    return { ...field }
   }
 
   async getByEntity(entity) {
-    await new Promise(resolve => setTimeout(resolve, 200))
-    return this.fields.filter(field => field.entity === entity).map(field => ({ ...field }))
+    try {
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "label" } },
+          { field: { Name: "type" } },
+          { field: { Name: "entity" } },
+          { field: { Name: "required" } },
+          { field: { Name: "placeholder" } },
+          { field: { Name: "options" } },
+          { field: { Name: "Tags" } },
+          { field: { Name: "CreatedOn" } }
+        ],
+        where: [
+          {
+            FieldName: "entity",
+            Operator: "EqualTo",
+            Values: [entity]
+          }
+        ],
+        orderBy: [{ fieldName: "CreatedOn", sorttype: "ASC" }],
+        pagingInfo: { limit: 100, offset: 0 }
+      };
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+
+      return response.data || [];
+    } catch (error) {
+      console.error("Error fetching custom fields by entity:", error);
+      throw error;
+    }
   }
 
   async create(fieldData) {
-    await new Promise(resolve => setTimeout(resolve, 300))
-    
-    const newField = {
-      Id: ++this.lastId,
-      ...fieldData,
-      createdAt: new Date().toISOString()
+    try {
+      const params = {
+        records: [{
+          Name: fieldData.label,
+          label: fieldData.label,
+          type: fieldData.type,
+          entity: fieldData.entity,
+          required: fieldData.required || false,
+          placeholder: fieldData.placeholder || null,
+          options: fieldData.options ? fieldData.options.join(',') : null,
+          Tags: fieldData.Tags || null
+        }]
+      };
+
+      const response = await this.apperClient.createRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+
+      if (response.results) {
+        const successfulRecords = response.results.filter(result => result.success);
+        const failedRecords = response.results.filter(result => !result.success);
+        
+        if (failedRecords.length > 0) {
+          console.error(`Failed to create ${failedRecords.length} custom fields:${JSON.stringify(failedRecords)}`);
+          throw new Error('Failed to create custom field');
+        }
+        
+        return successfulRecords[0]?.data;
+      }
+    } catch (error) {
+      console.error("Error creating custom field:", error);
+      throw error;
     }
-    
-    this.fields.push(newField)
-    return { ...newField }
   }
 
   async update(id, fieldData) {
-    await new Promise(resolve => setTimeout(resolve, 300))
-    
-    const index = this.fields.findIndex(f => f.Id === parseInt(id))
-    if (index === -1) {
-      throw new Error('Custom field not found')
+    try {
+      const updateRecord = { Id: parseInt(id) };
+      
+      if (fieldData.label !== undefined) {
+        updateRecord.Name = fieldData.label;
+        updateRecord.label = fieldData.label;
+      }
+      if (fieldData.type !== undefined) updateRecord.type = fieldData.type;
+      if (fieldData.entity !== undefined) updateRecord.entity = fieldData.entity;
+      if (fieldData.required !== undefined) updateRecord.required = fieldData.required;
+      if (fieldData.placeholder !== undefined) updateRecord.placeholder = fieldData.placeholder;
+      if (fieldData.options !== undefined) {
+        updateRecord.options = Array.isArray(fieldData.options) ? fieldData.options.join(',') : fieldData.options;
+      }
+      if (fieldData.Tags !== undefined) updateRecord.Tags = fieldData.Tags;
+
+      const params = { records: [updateRecord] };
+
+      const response = await this.apperClient.updateRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+
+      if (response.results) {
+        const successfulUpdates = response.results.filter(result => result.success);
+        const failedUpdates = response.results.filter(result => !result.success);
+        
+        if (failedUpdates.length > 0) {
+          console.error(`Failed to update ${failedUpdates.length} custom fields:${JSON.stringify(failedUpdates)}`);
+          throw new Error('Failed to update custom field');
+        }
+        
+        return successfulUpdates[0]?.data;
+      }
+    } catch (error) {
+      console.error("Error updating custom field:", error);
+      throw error;
     }
-    
-    this.fields[index] = {
-      ...this.fields[index],
-      ...fieldData,
-      Id: parseInt(id),
-      updatedAt: new Date().toISOString()
-    }
-    
-    return { ...this.fields[index] }
   }
 
   async delete(id) {
-    await new Promise(resolve => setTimeout(resolve, 300))
-    
-    const index = this.fields.findIndex(f => f.Id === parseInt(id))
-    if (index === -1) {
-      throw new Error('Custom field not found')
+    try {
+      const params = { RecordIds: [parseInt(id)] };
+
+      const response = await this.apperClient.deleteRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+
+      if (response.results) {
+        const failedDeletions = response.results.filter(result => !result.success);
+        
+        if (failedDeletions.length > 0) {
+          console.error(`Failed to delete ${failedDeletions.length} custom fields:${JSON.stringify(failedDeletions)}`);
+          throw new Error('Failed to delete custom field');
+        }
+        
+        return true;
+      }
+    } catch (error) {
+      console.error("Error deleting custom field:", error);
+      throw error;
     }
-    
-    this.fields.splice(index, 1)
-    return true
   }
 }
 

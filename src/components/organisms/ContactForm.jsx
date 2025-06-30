@@ -7,13 +7,13 @@ import Button from '@/components/atoms/Button'
 import ApperIcon from '@/components/ApperIcon'
 import { customFieldService } from '@/services/api/customFieldService'
 const ContactForm = ({ contact = null, onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState({
-    name: contact?.name || '',
+const [formData, setFormData] = useState({
+    name: contact?.Name || '',
     email: contact?.email || '',
     phone: contact?.phone || '',
     company: contact?.company || '',
     position: contact?.position || '',
-    tags: contact?.tags ? contact.tags.join(', ') : '',
+    tags: contact?.Tags ? contact.Tags.split(',').map(tag => tag.trim()).join(', ') : '',
     customFields: contact?.customFields || {}
   })
   

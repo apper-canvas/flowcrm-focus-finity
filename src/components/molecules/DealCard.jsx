@@ -40,10 +40,10 @@ const DealCard = ({ deal, contact, onEdit, className = '' }) => {
           {formatCurrency(deal.value)}
         </div>
         
-        {contact && (
+{contact && (
           <div className="flex items-center text-sm text-surface-600">
             <ApperIcon name="User" className="w-4 h-4 mr-1" />
-            {contact.name}
+            {contact.Name}
           </div>
         )}
         

@@ -24,27 +24,27 @@ const ContactCard = ({ contact, className = '' }) => {
       className={`card-interactive p-4 ${className}`}
     >
       <div className="flex items-center space-x-4">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center text-white font-semibold">
-          {getInitials(contact.name)}
+<div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center text-white font-semibold">
+          {getInitials(contact.Name)}
         </div>
         
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-surface-900 truncate">{contact.name}</h3>
+          <h3 className="font-semibold text-surface-900 truncate">{contact.Name}</h3>
           <p className="text-sm text-surface-600 truncate">{contact.company}</p>
           <p className="text-sm text-surface-500 truncate">{contact.email}</p>
         </div>
         
         <div className="flex flex-col items-end space-y-2">
-          {contact.tags && contact.tags.length > 0 && (
+{contact.Tags && (
             <div className="flex flex-wrap gap-1">
-              {contact.tags.slice(0, 2).map((tag, index) => (
+              {contact.Tags.split(',').slice(0, 2).map((tag, index) => (
                 <Badge key={index} variant="primary" size="sm">
-                  {tag}
+                  {tag.trim()}
                 </Badge>
               ))}
-              {contact.tags.length > 2 && (
+              {contact.Tags.split(',').length > 2 && (
                 <Badge variant="default" size="sm">
-                  +{contact.tags.length - 2}
+                  +{contact.Tags.split(',').length - 2}
                 </Badge>
               )}
             </div>

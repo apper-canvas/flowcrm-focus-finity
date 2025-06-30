@@ -85,13 +85,12 @@ const getDueDateColor = (dueDate) => {
                 </div>
               )}
               
-              {contact && (
+{contact && (
                 <div className="flex items-center">
                   <ApperIcon name="User" className="w-4 h-4 mr-1" />
-                  {contact.name}
+                  {contact.Name}
                 </div>
               )}
-              
               {deal && (
                 <div className="flex items-center">
                   <ApperIcon name="Target" className="w-4 h-4 mr-1" />

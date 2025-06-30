@@ -151,11 +151,10 @@ const ContactDetail = () => {
             {getInitials(contact.name)}
           </div>
           
-          <div className="flex-1">
-            <h1 className="text-3xl font-bold text-surface-900">{contact.name}</h1>
+<div className="flex-1">
+            <h1 className="text-3xl font-bold text-surface-900">{contact.Name}</h1>
             <p className="text-lg text-surface-600 mt-1">{contact.position}</p>
             <p className="text-surface-600">{contact.company}</p>
-            
             <div className="flex items-center space-x-6 mt-4">
               <div className="flex items-center text-surface-600">
                 <ApperIcon name="Mail" className="w-4 h-4 mr-2" />
@@ -174,16 +173,16 @@ const ContactDetail = () => {
               )}
               
               <div className="flex items-center text-surface-500">
-                <ApperIcon name="Calendar" className="w-4 h-4 mr-2" />
-                Added {format(new Date(contact.createdAt), 'MMM d, yyyy')}
+<ApperIcon name="Calendar" className="w-4 h-4 mr-2" />
+                Added {format(new Date(contact.CreatedOn), 'MMM d, yyyy')}
               </div>
             </div>
             
-            {contact.tags && contact.tags.length > 0 && (
+{contact.Tags && (
               <div className="flex flex-wrap gap-2 mt-4">
-                {contact.tags.map((tag, index) => (
+                {contact.Tags.split(',').map((tag, index) => (
                   <Badge key={index} variant="primary">
-                    {tag}
+                    {tag.trim()}
                   </Badge>
                 ))}
               </div>
@@ -229,9 +228,9 @@ const ContactDetail = () => {
               <div className="card p-6">
                 <h3 className="text-lg font-semibold text-surface-900 mb-4">Contact Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
+<div>
                     <label className="text-sm text-surface-500">Full Name</label>
-                    <p className="font-medium text-surface-900">{contact.name}</p>
+                    <p className="font-medium text-surface-900">{contact.Name}</p>
                   </div>
                   <div>
                     <label className="text-sm text-surface-500">Email</label>

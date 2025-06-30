@@ -44,31 +44,31 @@ const Contacts = () => {
   const filteredAndSortedContacts = useMemo(() => {
     let filtered = contacts
 
-    // Apply search filter
+// Apply search filter
     if (searchQuery) {
       filtered = filtered.filter(contact =>
-        contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        contact.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        contact.company.toLowerCase().includes(searchQuery.toLowerCase())
+        contact.Name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        contact.email?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        contact.company?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     }
 
     // Apply tag filter
-    if (filterBy !== 'all') {
+if (filterBy !== 'all') {
       filtered = filtered.filter(contact =>
-        contact.tags && contact.tags.includes(filterBy)
+        contact.Tags && contact.Tags.split(',').includes(filterBy)
       )
     }
 
     // Apply sorting
-    filtered.sort((a, b) => {
+filtered.sort((a, b) => {
       switch (sortBy) {
         case 'name':
-          return a.name.localeCompare(b.name)
+          return (a.Name || '').localeCompare(b.Name || '')
         case 'company':
-          return a.company.localeCompare(b.company)
-case 'recent':
-          return new Date(b.createdAt) - new Date(a.createdAt)
+          return (a.company || '').localeCompare(b.company || '')
+        case 'recent':
+          return new Date(b.CreatedOn || 0) - new Date(a.CreatedOn || 0)
         case 'lastContacted': {
           const aDate = a.lastContactedAt ? new Date(a.lastContactedAt) : new Date(0)
           const bDate = b.lastContactedAt ? new Date(b.lastContactedAt) : new Date(0)
@@ -89,9 +89,9 @@ case 'recent':
       setShowForm(false)
       
       // Log activity
-      await activityService.create({
+await activityService.create({
         type: 'contact',
-        description: `Created new contact: ${newContact.name}`,
+        description: `Created new contact: ${newContact.Name}`,
         contactId: newContact.Id,
         timestamp: new Date().toISOString()
       })
@@ -110,9 +110,9 @@ case 'recent':
       setShowForm(false)
       
       // Log activity
-      await activityService.create({
+await activityService.create({
         type: 'contact',
-        description: `Updated contact: ${updatedContact.name}`,
+        description: `Updated contact: ${updatedContact.Name}`,
         contactId: updatedContact.Id,
         timestamp: new Date().toISOString()
       })
@@ -134,10 +134,10 @@ case 'recent':
   }
 
   const getAllTags = () => {
-    const allTags = new Set()
+const allTags = new Set()
     contacts.forEach(contact => {
-      if (contact.tags) {
-        contact.tags.forEach(tag => allTags.add(tag))
+      if (contact.Tags) {
+        contact.Tags.split(',').forEach(tag => allTags.add(tag.trim()))
       }
     })
     return Array.from(allTags)

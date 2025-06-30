@@ -31,9 +31,9 @@ const TaskForm = ({ task = null, contacts = [], deals = [], onSubmit, onCancel }
     { value: 'high', label: 'High' }
   ]
 
-  const contactOptions = contacts.map(contact => ({
+const contactOptions = contacts.map(contact => ({
     value: contact.Id.toString(),
-    label: `${contact.name} - ${contact.company}`
+    label: `${contact.Name} - ${contact.company}`
   }))
 
   const dealOptions = deals.map(deal => ({

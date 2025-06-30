@@ -6,8 +6,8 @@ import Select from '@/components/atoms/Select'
 import Button from '@/components/atoms/Button'
 import { customFieldService } from '@/services/api/customFieldService'
 const DealForm = ({ deal = null, contacts = [], onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState({
-    title: deal?.title || '',
+const [formData, setFormData] = useState({
+    title: deal?.title || deal?.Name || '',
     value: deal?.value || '',
     stage: deal?.stage || 'lead',
     contactId: deal?.contactId || '',
@@ -41,9 +41,9 @@ const DealForm = ({ deal = null, contacts = [], onSubmit, onCancel }) => {
     { value: 'closed-lost', label: 'Closed Lost' }
   ]
 
-  const contactOptions = contacts.map(contact => ({
+const contactOptions = contacts.map(contact => ({
     value: contact.Id.toString(),
-    label: `${contact.name} - ${contact.company}`
+    label: `${contact.Name} - ${contact.company}`
   }))
 
   const validateForm = () => {
