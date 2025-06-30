@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { toast } from 'react-toastify'
+import Modal from 'react-modal'
 import ContactCard from '@/components/molecules/ContactCard'
 import ContactForm from '@/components/organisms/ContactForm'
 import SearchBar from '@/components/molecules/SearchBar'
@@ -261,8 +262,19 @@ case 'recent':
         </div>
       </div>
 
-      {/* Contact Form */}
-      {showForm && (
+{/* Contact Form Modal */}
+      <Modal
+        isOpen={showForm}
+        onRequestClose={() => {
+          setShowForm(false)
+          setEditingContact(null)
+        }}
+        className="modal-content"
+        overlayClassName="modal-overlay"
+        shouldCloseOnOverlayClick={true}
+        shouldCloseOnEsc={true}
+        ariaHideApp={false}
+      >
         <ContactForm
           contact={editingContact}
           onSubmit={editingContact ? handleEditContact : handleCreateContact}
@@ -271,7 +283,7 @@ case 'recent':
             setEditingContact(null)
           }}
         />
-      )}
+      </Modal>
 
       {/* Contact List */}
       <div className="space-y-4">
