@@ -113,7 +113,7 @@ class CustomFieldService {
     try {
       const params = {
         records: [{
-          Name: fieldData.label,
+Name: fieldData.label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, ''),
           label: fieldData.label,
           type: fieldData.type,
           entity: fieldData.entity,
@@ -154,7 +154,8 @@ class CustomFieldService {
       
       if (fieldData.label !== undefined) {
         updateRecord.Name = fieldData.label;
-        updateRecord.label = fieldData.label;
+updateRecord.label = fieldData.label;
+        updateRecord.Name = fieldData.label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
       }
       if (fieldData.type !== undefined) updateRecord.type = fieldData.type;
       if (fieldData.entity !== undefined) updateRecord.entity = fieldData.entity;
@@ -216,7 +217,8 @@ class CustomFieldService {
       console.error("Error deleting custom field:", error);
       throw error;
     }
-  }
+}
 }
 
+export { customFieldService };
 export const customFieldService = new CustomFieldService()
