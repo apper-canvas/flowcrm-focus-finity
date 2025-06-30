@@ -68,16 +68,23 @@ class ActivityService {
     }
   }
 
-  async create(activityData) {
+async create(activityData) {
     try {
+      // Ensure proper data formatting for Apper backend
+      const formattedTimestamp = activityData.timestamp 
+        ? new Date(activityData.timestamp).toISOString()
+        : new Date().toISOString();
+      
       const params = {
         records: [{
-          Name: activityData.description,
+          // CRITICAL: Only include Updateable fields as per Tables & Fields JSON
+          Name: activityData.name || activityData.description || 'New Activity',
           type: activityData.type,
           description: activityData.description,
-          timestamp: activityData.timestamp || new Date().toISOString(),
-          contactId: activityData.contactId || null,
-          dealId: activityData.dealId || null,
+          timestamp: formattedTimestamp,
+          // Convert lookup values to integers for proper database storage
+          contactId: activityData.contactId ? parseInt(activityData.contactId) : null,
+          dealId: activityData.dealId ? parseInt(activityData.dealId) : null,
           Tags: activityData.Tags || null
         }]
       };
@@ -85,7 +92,7 @@ class ActivityService {
       const response = await this.apperClient.createRecord(this.tableName, params);
       
       if (!response.success) {
-        console.error(response.message);
+        console.error('Activity creation failed:', response.message);
         throw new Error(response.message);
       }
 
@@ -95,11 +102,26 @@ class ActivityService {
         
         if (failedRecords.length > 0) {
           console.error(`Failed to create ${failedRecords.length} activities:${JSON.stringify(failedRecords)}`);
-          throw new Error('Failed to create activity');
+          
+          // Log detailed error information for debugging
+          failedRecords.forEach(record => {
+            if (record.errors) {
+              record.errors.forEach(error => {
+                console.error(`Field ${error.fieldLabel}: ${error.message}`);
+              });
+            }
+            if (record.message) {
+              console.error(`Record error: ${record.message}`);
+            }
+          });
+          
+          throw new Error('Failed to create activity - check console for details');
         }
         
         return successfulRecords[0]?.data;
       }
+      
+      throw new Error('No results returned from activity creation');
     } catch (error) {
       console.error("Error creating activity:", error);
       throw error;
