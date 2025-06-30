@@ -66,12 +66,13 @@ const Contacts = () => {
           return a.name.localeCompare(b.name)
         case 'company':
           return a.company.localeCompare(b.company)
-        case 'recent':
+case 'recent':
           return new Date(b.createdAt) - new Date(a.createdAt)
-        case 'lastContacted':
+        case 'lastContacted': {
           const aDate = a.lastContactedAt ? new Date(a.lastContactedAt) : new Date(0)
           const bDate = b.lastContactedAt ? new Date(b.lastContactedAt) : new Date(0)
           return bDate - aDate
+        }
         default:
           return 0
       }

@@ -72,14 +72,15 @@ const Activities = () => {
         case 'yesterday':
           filtered = filtered.filter(activity => 
             isYesterday(new Date(activity.timestamp))
-          )
+)
           break
-        case 'last7days':
+        case 'last7days': {
           const sevenDaysAgo = subDays(today, 7)
           filtered = filtered.filter(activity => 
             new Date(activity.timestamp) >= sevenDaysAgo
           )
           break
+        }
         case 'email':
         case 'call':
         case 'meeting':

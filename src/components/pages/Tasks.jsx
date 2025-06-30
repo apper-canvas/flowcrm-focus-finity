@@ -112,11 +112,12 @@ const Tasks = () => {
         case 'dueDate':
           if (!a.dueDate && !b.dueDate) return 0
           if (!a.dueDate) return 1
-          if (!b.dueDate) return -1
+if (!b.dueDate) return -1
           return new Date(a.dueDate) - new Date(b.dueDate)
-        case 'priority':
+        case 'priority': {
           const priorityOrder = { high: 3, medium: 2, low: 1 }
           return priorityOrder[b.priority] - priorityOrder[a.priority]
+        }
         case 'status':
           return a.status.localeCompare(b.status)
         case 'title':
