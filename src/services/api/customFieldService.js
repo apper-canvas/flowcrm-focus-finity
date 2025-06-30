@@ -119,7 +119,7 @@ async create(fieldData) {
           entity: fieldData.entity,
           required: fieldData.required || false,
           placeholder: fieldData.placeholder || "",
-          options: fieldData.options ? fieldData.options.join(',') : ""
+          options: fieldData.options || []
         }]
       };
 
@@ -159,8 +159,8 @@ async update(id, fieldData) {
       if (fieldData.entity !== undefined) updateRecord.entity = fieldData.entity;
       if (fieldData.required !== undefined) updateRecord.required = fieldData.required;
       if (fieldData.placeholder !== undefined) updateRecord.placeholder = fieldData.placeholder;
-      if (fieldData.options !== undefined) {
-        updateRecord.options = Array.isArray(fieldData.options) ? fieldData.options.join(',') : fieldData.options;
+if (fieldData.options !== undefined) {
+        updateRecord.options = Array.isArray(fieldData.options) ? fieldData.options : [];
       }
       if (fieldData.Tags !== undefined) updateRecord.Tags = fieldData.Tags;
 
