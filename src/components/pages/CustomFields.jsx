@@ -399,22 +399,34 @@ handleCloseModal()
                           </>
                         )}
                       </div>
-                      {field.options && field.options.length > 0 && (
-                        <div className="mt-2">
-                          <div className="flex flex-wrap gap-1">
-                            {field.options.slice(0, 3).map((option, i) => (
-                              <span key={i} className="px-2 py-1 bg-surface-100 text-surface-700 text-xs rounded">
-                                {option}
-                              </span>
-                            ))}
-                            {field.options.length > 3 && (
-                              <span className="px-2 py-1 bg-surface-100 text-surface-700 text-xs rounded">
-                                +{field.options.length - 3} more
-                              </span>
-                            )}
+{(() => {
+                        // Handle both array and comma-separated string formats
+                        let optionsArray = [];
+                        if (field.options) {
+                          if (Array.isArray(field.options)) {
+                            optionsArray = field.options;
+                          } else if (typeof field.options === 'string') {
+                            optionsArray = field.options.split(',').map(opt => opt.trim()).filter(opt => opt);
+                          }
+                        }
+                        
+                        return optionsArray.length > 0 && (
+                          <div className="mt-2">
+                            <div className="flex flex-wrap gap-1">
+                              {optionsArray.slice(0, 3).map((option, i) => (
+                                <span key={i} className="px-2 py-1 bg-surface-100 text-surface-700 text-xs rounded">
+                                  {option}
+                                </span>
+                              ))}
+                              {optionsArray.length > 3 && (
+                                <span className="px-2 py-1 bg-surface-100 text-surface-700 text-xs rounded">
+                                  +{optionsArray.length - 3} more
+                                </span>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        );
+                      })()}
                     </div>
                   </div>
 
