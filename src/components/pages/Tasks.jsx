@@ -1,21 +1,25 @@
-import { useState, useEffect, useMemo } from 'react'
-import { motion } from 'framer-motion'
-import { toast } from 'react-toastify'
-import { isToday, isOverdue, isPast } from 'date-fns'
-import TaskItem from '@/components/molecules/TaskItem'
-import TaskForm from '@/components/organisms/TaskForm'
-import SearchBar from '@/components/molecules/SearchBar'
-import Button from '@/components/atoms/Button'
-import Select from '@/components/atoms/Select'
-import Badge from '@/components/atoms/Badge'
-import Loading from '@/components/ui/Loading'
-import Error from '@/components/ui/Error'
-import Empty from '@/components/ui/Empty'
-import ApperIcon from '@/components/ApperIcon'
-import { taskService } from '@/services/api/taskService'
-import { contactService } from '@/services/api/contactService'
-import { dealService } from '@/services/api/dealService'
-import { activityService } from '@/services/api/activityService'
+import React, { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { isPast, isToday } from "date-fns";
+import ApperIcon from "@/components/ApperIcon";
+import TaskForm from "@/components/organisms/TaskForm";
+import Badge from "@/components/atoms/Badge";
+import Select from "@/components/atoms/Select";
+import Button from "@/components/atoms/Button";
+import TaskItem from "@/components/molecules/TaskItem";
+import SearchBar from "@/components/molecules/SearchBar";
+import Error from "@/components/ui/Error";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import { taskService } from "@/services/api/taskService";
+import { contactService } from "@/services/api/contactService";
+import { dealService } from "@/services/api/dealService";
+import { activityService } from "@/services/api/activityService";
+// Helper function to check if a date is overdue
+const isOverdue = (date) => {
+  return isPast(date) && !isToday(date);
+};
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([])

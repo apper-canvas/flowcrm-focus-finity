@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
-import { format, isOverdue, isToday } from 'date-fns'
+import { format, isPast, isToday } from 'date-fns'
 import ApperIcon from '@/components/ApperIcon'
 import Badge from '@/components/atoms/Badge'
-
 const TaskItem = ({ task, contact, deal, onToggle, onEdit, className = '' }) => {
   const getPriorityColor = (priority) => {
     switch (priority) {
@@ -22,10 +21,10 @@ const TaskItem = ({ task, contact, deal, onToggle, onEdit, className = '' }) => 
     }
   }
 
-  const getDueDateColor = (dueDate) => {
+const getDueDateColor = (dueDate) => {
     if (!dueDate) return 'text-surface-500'
     const date = new Date(dueDate)
-    if (isOverdue(date)) return 'text-red-600'
+    if (isPast(date)) return 'text-red-600'
     if (isToday(date)) return 'text-yellow-600'
     return 'text-surface-500'
   }
